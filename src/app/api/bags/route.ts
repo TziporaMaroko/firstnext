@@ -18,7 +18,8 @@ export async function GET() {
     { id: 9, name: "Fendi Baguette Bag", price: 2500, imageUrl: "https://static.fendi.com/dam/is/image/fendi/8BR600A72VF15ZW_01?wid=1000&hei=1000&hash=78c5845684504b7a51390a6f61ace1f9-1820279ffb0" },
     { id: 10, name: "Celine Triomphe Bag", price: 2000, imageUrl: "https://twicpics.celine.com/product-prd/images/large/187363BF4.38NO_1_SS24_P1_W_V4.jpg" },
     { id: 11, name: "Balenciaga Hourglass Bag", price: 2500, imageUrl: "https://cdn-images.farfetch-contents.com/15/21/68/72/15216872_54376283_600.jpg" },
-    { id: 12, name: "Bottega Veneta Jodie Bag", price: 3000, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_HoPTW_qhNozwccmmcsujD8MuXE0ErMmAtg&s" }
-  ];
+    { id: 12, name: "Bottega Veneta Jodie Bag", price: 3000, imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_HoPTW_qhNozwccmmcsujD8MuXE0ErMmAtg&s" },
+    { id: 13, name: "wwww new",price:5656, imageUrl: "nnn"}
+   ];
   return NextResponse.json(bags);
 }
