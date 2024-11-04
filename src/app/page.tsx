@@ -3,7 +3,7 @@ import Image from "next/image";
 import useStore from '@/store/useStore';
 
 export default function Home() {
-  const { count, increase, decrease, reset } = useStore();
+  const { increase, decrease, reset } = useStore();
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -52,7 +52,6 @@ export default function Home() {
           </a>
         </div>
         <div>
-          <h1>Count: {count}</h1>
           <button onClick={increase}>Increase</button>
           <button onClick={decrease}>Decrease</button>
           <button onClick={reset}>Reset</button>
