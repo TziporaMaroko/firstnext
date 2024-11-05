@@ -1,3 +1,4 @@
+// app/bags/page.tsx
 "use client";
 import { useEffect, useState } from 'react';
 import { fetchBags } from '../../services/apiService';
@@ -13,8 +14,7 @@ type Bag = {
 };
 
 const BagsPage = () => {
-  const { count } = useStore();
-
+  const { count } = useStore(); // Access the count from the store
   const [bags, setBags] = useState<Bag[]>([]);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const BagsPage = () => {
 
   return (
     <div className={style.bagsPage}>
-      <h1>Count: {count}</h1>
+      <h1>Count: {count}</h1> {/* Display count here */}
       <div className={style.grid}>
         {bags.map(item => (
           <ProductCard key={item.id} {...item} />
