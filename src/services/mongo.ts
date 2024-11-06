@@ -34,7 +34,7 @@ export async function getAllDocuments(client: MongoClient, collection: string) {
 export async function updateDocument(client: MongoClient, collection: string, id: string, updatedData: object) {
     const db = client.db("db01");
     const result = await db.collection(collection).updateOne(
-        { _id: new ObjectId(id) }, // Ensure this is working with ObjectId
+        { _id: new ObjectId(id) }, 
         { $set: updatedData }
     );
     return result;
