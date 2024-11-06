@@ -1,12 +1,12 @@
 "use server";
 import { MongoClient, ObjectId } from "mongodb";
 
+// Define `client` and `clientPromise` with proper types
+let client: MongoClient | null = null;
+let clientPromise: Promise<MongoClient> | null = null;
 
-let client: MongoClient;
-let clientPromise: Promise<MongoClient>;
-
-
-export async function connectDatabase() {
+// Connect to the MongoDB database
+export async function connectDatabase(): Promise<MongoClient> {
    if (!client) {
        const dbConnectionString = process.env.PUBLIC_DB_CONNECTION;
        if (!dbConnectionString) {
@@ -15,33 +15,32 @@ export async function connectDatabase() {
        client = new MongoClient(dbConnectionString);
        clientPromise = client.connect();
    }
-   return clientPromise;
+   return clientPromise!;
 }
 
-
-export async function insertDocument(client: any, collection: string, document: object) {
+// Insert a document into a specified collection
+export async function insertDocument(client: MongoClient, collection: string, document: object) {
     const db = client.db('db01');
-    const result = await db.collection(collection).insertOne(document);
-    return result;
+    return await db.collection(collection).insertOne(document);
 }
 
-export async function getAllDocuments(client: any, collection: string) {
+// Retrieve all documents from a specified collection
+export async function getAllDocuments(client: MongoClient, collection: string) {
     const db = client.db('db01');
-    const documents = await db.collection(collection).find().toArray();
-    return documents;
+    return await db.collection(collection).find().toArray();
 }
 
-export async function updateDocument(client: any, collection: string, id: string, updatedData: object) {
-    const db = client.db('db01');
+// Update a document in a specified collection by ID
+export async function updateDocument(client: MongoClient, collection: string, id: string, updatedData: object) {
+    const db = client.db("db01");
     const result = await db.collection(collection).updateOne(
-        { _id: new ObjectId(id) },
+        { _id: new ObjectId(id) }, // Ensure this is working with ObjectId
         { $set: updatedData }
     );
     return result;
 }
-
-export async function deleteDocument(client: any, collection: string, id: string) {
+// Delete a document in a specified collection by ID
+export async function deleteDocument(client: MongoClient, collection: string, id: string) {
     const db = client.db('db01');
-    const result = await db.collection(collection).deleteOne({ _id: new ObjectId(id) });
-    return result;
+    return await db.collection(collection).deleteOne({ _id: new ObjectId(id) });
 }
